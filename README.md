@@ -1,6 +1,6 @@
 # yolo_truck
 
-打开floyd客户端
+#1、floyd客户端操作
 
 
 floyd login --username aa --password bb
@@ -17,10 +17,10 @@ floyd init quick-start
 floyd run --data sanfooh15/datasets/darknet19_448conv23:/data --gpu --mode jupyter
 
 
-1、使用run.bat 登陆，具体信息要改
+#2、打开jupyter notebook terminal
 
 
-2、打开terminal,切到根目录,
+cd ..
 
 
 git clone https://github.com/sanfooh/darknet_for_floydhub.git
