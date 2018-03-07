@@ -135,7 +135,7 @@ if __name__ == "__main__":
     #print r[:10]
     net = load_net(b"/darknet/work/cfg/YOLO-obj.cfg", b"/data/YOLO-obj_20000.weights", 0)
     meta = load_meta(b"/darknet/work/cfg/obj.data")
-    r = detect(net, meta, "/darknet/test/dog.jpg")
+    r = detect(net, meta, b"/darknet/test/dog.jpg")
     print(r)
     
 
