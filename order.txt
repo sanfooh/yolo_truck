@@ -1,0 +1,10 @@
+cd ..
+git clone https://github.com/sanfooh/darknet_for_floydhub.git
+mv darknet_for_floydhub darknet
+cd darknet
+git clone https://github.com/sanfooh/yolo_truck.git
+mv yolo_truck work
+chmod 777 darknet
+
+
+./darknet detector train work/cfg/obj.data work/cfg/YOLO-obj.cfg /data/YOLO-obj.backup
