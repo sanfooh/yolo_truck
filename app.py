@@ -186,8 +186,8 @@ class ImagenetClassifier(object):
     def __init__(self, model_def_file, pretrained_model_file, mean_file,
                  raw_scale, class_labels_file, bet_file, image_dim, gpu_mode):
         logging.info('Loading net and associated files...')
-        base_dir = b""
-        self.net = darknet.load_net(base_dir + b"cfg/YOLO-obj.cfg", base_dir + b"YOLO-obj.weight", 0)
+        base_dir = b"/darknet/work/"
+        self.net = darknet.load_net(base_dir + b"cfg/YOLO-obj.cfg",  b"/data/YOLO-obj.backup", 0)
         self.meta = darknet.load_meta(base_dir + b"cfg/obj.data")
 
     def classify_image(self, image_filename):
@@ -206,7 +206,7 @@ class ImagenetClassifier(object):
                            'image. Maybe try another one?')
 
 
-def start_tornado(app, port=5000):
+def start_tornado(app):
     http_server = tornado.httpserver.HTTPServer(
         tornado.wsgi.WSGIContainer(app))
     http_server.listen(port)
@@ -238,11 +238,11 @@ def start_from_terminal(app):
     # Initialize classifier + warm start by forward for allocation
     app.clf = ImagenetClassifier(**ImagenetClassifier.default_args)
     #app.clf.net.forward()
-
-    if opts.debug:
-        app.run(debug=True, host='0.0.0.0', port=opts.port)
-    else:
-        start_tornado(app, opts.port)
+    app.run(debug=True, host='0.0.0.0')
+    #if opts.debug:
+    #    app.run(debug=True, host='0.0.0.0')
+    #else:
+    #    start_tornado(app)
 
 
 if __name__ == '__main__':
