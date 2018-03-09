@@ -36,7 +36,7 @@ class METADATA(Structure):
     
 
 #lib = CDLL("/home/pjreddie/documents/darknet/libdarknet.so", RTLD_GLOBAL)
-lib = CDLL("/darknet/libdarknet.so", RTLD_GLOBAL)
+lib = CDLL("/root/yolo/darknet/libdarknet.so", RTLD_GLOBAL)
 lib.network_width.argtypes = [c_void_p]
 lib.network_width.restype = c_int
 lib.network_height.argtypes = [c_void_p]
@@ -112,6 +112,7 @@ def classify(net, meta, im):
     return res
 
 def detect(net, meta, image, thresh=.5, hier_thresh=.5, nms=.45):
+    print(image)
     im = load_image(image, 0, 0)
     boxes = make_boxes(net)
     probs = make_probs(net)
@@ -127,15 +128,6 @@ def detect(net, meta, image, thresh=.5, hier_thresh=.5, nms=.45):
     free_ptrs(cast(probs, POINTER(c_void_p)), num)
     return res
     
-if __name__ == "__main__":
-    #net = load_net("cfg/densenet201.cfg", "/home/pjreddie/trained/densenet201.weights", 0)
-    #im = load_image("data/wolf.jpg", 0, 0)
-    #meta = load_meta("cfg/imagenet1k.data")
-    #r = classify(net, meta, im)
-    #print r[:10]
-    net = load_net(b"/darknet/work/cfg/YOLO-obj.cfg", b"/data/YOLO-obj_20000.weights", 0)
-    meta = load_meta(b"/darknet/work/cfg/obj.data")
-    r = detect(net, meta, b"/darknet/test/dog.jpg")
-    print(r)
+
     
 
