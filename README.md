@@ -120,7 +120,7 @@ darknet.exe detector train cfg/obj.data cfg/yolo-obj.cfg backup/yolo-obj_2000.we
 
 >  * 7、训练过程长这样:
 那么什么情况下觉得可以停止了呢？主要是看IOU，如果IOU已经接近于1，那么说明不错了。
-我这边已经训练了一个泥头车辆的[模型][1]
+这边已经训练了一个泥头车辆的[模型][1]
 ## 使用：
 当我们训练完，一般在普通GPU上要花费几个小时，产生了很多的模型文件以后，我们就可以验证模型了，首先是用命令行来验证：
 ```
@@ -128,12 +128,13 @@ darknet.exe detector test cfg/obj.data cfg/yolo-obj.cfg yolo-obj1000.weights dat
 ```
 >  * 1、当验证完需要布署到服务上时，我们可以：
 >  * 2）linux上使用darknet.so库，使用接口编写自己的程序。
->  * 3）使用项目中的darknet.py文件，利用flask发布出来(我写的例子如下：https://github.com/sanfooh/yolo_truck)。
+>  * 3）使用项目中的darknet.py文件，利用flask发布出来(我写的例子如下：https://github.com/sanfooh/yolo_truck)。其中flask部分来自https://github.com/makefile/objdet_web
 >  * 4）在windows上直接修改项目文件，改成darknet.dll使用。
 
 
 ### 参考：
 >  * https://pjreddie.com/darknet/yolo/
 >  * https://timebutt.github.io/static/how-to-train-yolov2-to-detect-custom-objects/
+>  * https://github.com/makefile/objdet_web
 
 [1]:https://www.floydhub.com/sansooh1/datasets/quick-start/1
