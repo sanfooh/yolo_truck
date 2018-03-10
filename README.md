@@ -1,3 +1,4 @@
+本项目包括拉土的一些标注文件，还有几个配置文件，另外还包括一个flask程序用于测试发布，训练好的[模型][1]下载
 ## 背景：
 > * 1、darknet与yolo,darknet是一个深度学习框架，类似tensorflow,theano,mxnet,caffe之类，包含cnn，rnn等组件，yolo是一个网络模型，类似VGG,resnet之类，yolo原生框架是darknet，yolo也可以使用其它框架来搭建。
 > * 2、什么是yolo,yolo主要的作用是实时对象检测：你只看一次（You only look once 的缩写）是一个先进的实时对象检测系统。在Titan X上，它以40-90 FPS的速度处理图像，COCO test-dev上的VOC 2007上的mAP为78.6％，mAP为48.1％。
