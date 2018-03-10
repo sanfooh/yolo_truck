@@ -102,24 +102,28 @@ cat
 .....
 
 > > * 3)最后还有一个obj.data文件：
+```
 classes= 1
 train = /darknet/work/train.txt
 valid = /darknet/work/test.txt
 names = /darknet/work/cfg/obj.names
 backup = /output/
-classes是指对象分类，这里我只检测一类对象，所以是1
-names就是指对象名称文件
-backup是指darknet在训练到比如100轮，200轮....时会自动把模型保存到该目录。它产生的文件名形如：YOLO-obj_9000.weight，一看到这个文件名，即可知道已经训练了几轮了。
-train 和valid 是指索引文件了。
+```
+* classes是指对象分类，这里我只检测一类对象，所以是1
+* names就是指对象名称文件
+* backup是指darknet在训练到比如100轮，200轮....时会自动把模型保存到该目录。它产生的文件名形如：YOLO-obj_9000.* weight，一看到这个文件名，即可知道已经训练了几轮了。
+* train 和valid 是指索引文件了。
 
 >  * 4、在训练之前，还要再下载一个预训练文件：darknet19_448.conv.23（https://pjreddie.com/media/files/darknet19_448.conv.23），然后执行命令：
+```
 darknet.exe detector train cfg/obj.data cfg/yolo-obj.cfg darknet19_448.conv.23
-darknet.exe detector train：这一段是命令本身，说要开始训练了。
-cfg/obj.data：就是上面说的obj.data,里有指定train.txt,test.txt，obj.names,backup的路径
-cfg/yolo-obj.cfg：就是模型的网格结构文件。
-darknet19_448.conv.23：是预训练文件，预训练文件是让我们基于别人的基础上更快的训练出自己的模型，这样会比较省时间。
+```
+> > * darknet.exe detector train：这一段是命令本身，说要开始训练了。
+> > * cfg/obj.data：就是上面说的obj.data,里有指定train.txt,test.txt，obj.names,backup的路径
+> > * cfg/yolo-obj.cfg：就是模型的网格结构文件。
+> > * darknet19_448.conv.23：是预训练文件，预训练文件是让我们基于别人的基础上更快的训练出自己的模型，这样会比较省时间。
 
->  * 5、在darknet源代码里，可以找到很多的配置文件示例，需要花点时间去观赏一下。
+>* 5、在darknet源代码里，可以找到很多的配置文件示例，需要花点时间去观赏一下。
 
 >  * 6、训练了一段时间以后，忽然关机了，怎么办？没事，再次开机以后去backup目录里找一找，一般会找到如：yolo-obj_1000.weights，yolo-obj_2000.weights这类文件，然后使用最后一个
 darknet.exe detector train cfg/obj.data cfg/yolo-obj.cfg backup/yolo-obj_2000.weights
