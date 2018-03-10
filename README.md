@@ -84,10 +84,10 @@ stride=1
 pad=1
 activation=leaky
 //省略
-```
+
 
 其中像convolutional节就代表一个卷积层，指定有多少个卷积核心filters=30，基本上就是一个网络结构定义以及一些其它配置。
-
+```
 > > * 2)一个对象名称文件，比如叫obj.names，这个文件比较简单，一行一个对象名称：
 dog
 fox
@@ -120,7 +120,7 @@ darknet.exe detector train cfg/obj.data cfg/yolo-obj.cfg backup/yolo-obj_2000.we
 
 >  * 7、训练过程长这样:
 那么什么情况下觉得可以停止了呢？主要是看IOU，如果IOU已经接近于1，那么说明不错了。
-
+我这边已经训练了一个泥头车辆的[模型][1]
 ## 使用：
 当我们训练完，一般在普通GPU上要花费几个小时，产生了很多的模型文件以后，我们就可以验证模型了，首先是用命令行来验证：
 ```
@@ -135,3 +135,5 @@ darknet.exe detector test cfg/obj.data cfg/yolo-obj.cfg yolo-obj1000.weights dat
 ### 参考：
 >  * https://pjreddie.com/darknet/yolo/
 >  * https://timebutt.github.io/static/how-to-train-yolov2-to-detect-custom-objects/
+
+[1]:https://www.floydhub.com/sansooh1/datasets/quick-start/1
